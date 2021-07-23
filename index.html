@@ -29,7 +29,7 @@ color:white;
 height:40px;
 background-color:white;
 color:black;
-border:1px solid black;
+border:3px solid black;
 box-sizing:border-box;
 width:400px;
 padding:5px;
@@ -97,21 +97,8 @@ form{ margin-top:11px;
  }
  
  
- #homeoptions1, #premiumopt, #normalopt{position:relative;
- text-decoration:none;
- list-style:none;
- font-size:20px;
- 
- 
- }
- 
- #premiumopt, #normalopt{ margin-left:-27px;
- }
- 
- 
- .drpbt{ width:354px;
- margin-top:-8px;
- }
+.select{ padding-left:20px; width:99%; height:35px;  }
+
  a{ 
  text-decoration:none;
  color:black;
@@ -122,6 +109,9 @@ form{ margin-top:11px;
  
  p{ font-size:20px;
  }
+ 
+ 
+ #apv{ display:none;}
 </style>
 </head>
 
@@ -133,36 +123,39 @@ form{ margin-top:11px;
 <button id="contact" class="button">Contact</button>
 
 </div><br><br><p></p>
-<div ><button style="text-align:center; background-color:#008c8c; color:white; width:99%; margin-left:2px; height:35px;"><b><a href="#" style="color:white;">Notifications<a></b></button></div><br>
-<div style="margin-left:25px; " id="main">
+
+<div style="margin-left:8px; " id="main">
 <div>
-<div ><p id="selectingc1" >Select Categories  <i class="fa fa-angle-down" style="font-size:18px;"></i></p>
-      <div id="homeoptions1" ><button class="drpbt pm" >Premium Accounts</button><br><button class="drpbt nm" > Normal</button>
-	  <button class="drpbt pm" >exapmle</button><br><button class="drpbt nm" > example</button</div>
+<select onclick="mainoptions()" class="select" id="demo">
+<option>Select Categories Below</option><option value="PremiumAccounts" >Premium Accounts </option><option value="NormalAccounts">Normal Accounts</option>
+</select>
+</div>
+<br><div>
+<select class="select" id="premiumoptions" onclick="Premium()">
+<option >Select Services Below</option><option value="AmazonPrime">Amazon Prime </option><option >Example</option>
+</select>
+</div>
+<br>
+<!--contents-->
+<div id="apv" >
+<center ><h3><b> Total Order: Rs.40/-</b></h3></center><br> 	
+<div style="border:2px solid black; width:365px;">
+<li>Monthly Subsription</li><li>Private Account</li><li>Password Changeble</li><li>With Mail Access</li><li>28 Days Warranty</li>
+</div><br>
+<p style="border:2px solid black; width:365px; "> 0-5 Minutes</p>
+</div>
+<br>
+
+
 </div>
 
-<p></p>
-<div id="premiumaccounts" >
-<div><p id="premiumaccounts1">Select services Below   <i class="fa fa-angle-down" style="font-size:18px;"></i></p><br>
-       <div id="premiumopt" ><button class="drpbt" style="margin-top:-8px;"><a href="amazon.html"  >Amazon Prime Video</a></button><br><button class="drpbt"><a href="netflix.html" > Netflix</a></button></div>
-</div></div>
-
-<p></p>
-
-<div id="normalaccounts" >
-<div><p id="normalaccounts1">Select services below    <i class="fa fa-angle-down" style="font-size:18px;"></i></p><br>
-       <div id="normalopt" 	><button class="drpbt" style="margin-top:-8px;"> <a href="#"  >Instagram Likes</a></button><br><button class="drpbt"><a href="#" > Instagram Views</a></button></div>
-</div></div>
-
-</div>
-</div>
-
-</div>
+</div><!--end of home-->
 
 <div id="aboutdata">This is about</div>
 <div id="contactdata" > 
 <form  action="mailto:medialogist7@gmail.com" method="post" enctype="text/plain">
 <select onclick="selectform()" style="width:98%; height:45px;"><option>None</option><option>Premium Account Issues</option><option>Order-cancel</option><option>Order-refill</option></select>
+
 <div id="hideform">
 <input type="text" placeholder="Name" name="Name" required class="input"><br><br>
 <input type="email" placeholder="Mail" name="Mail" required class="input"><br><br>
@@ -180,54 +173,22 @@ form{ margin-top:11px;
 
 
 <script>
- document.getElementById("homeoptions1").style.display="none";
- document.getElementById("premiumaccounts").style.display="none";
- document.getElementById("normalaccounts").style.display="none";
- document.getElementById("premiumopt").style.display="none";
- document.getElementById("normalopt").style.display="none";
  
+ document.getElementById("premiumoptions").style.display="none";
+ 
+ function mainoptions(){
+ var s=document.getElementById("demo");
+ if (s.value == "PremiumAccounts"){
+ document.getElementById("premiumoptions").style.display="block";
+ }
+ }
 
-
-$(document).ready(function(){
-$("#selectingc1").click(function(){
-$("#homeoptions1").toggle();
-});
-});
-
-//////////////////////////////////////////////////////////////////
-
-
-$(document).ready(function(){
-$(".pm").click(function(){
-$("#selectingc1").html("Premium Accounts");
-$("#homeoptions1").toggle();
-$("#premiumaccounts").toggle();
-$("#normalaccounts").css("display","none");
-
-});
-});
-
-$(document).ready(function(){
-$(".nm").click(function(){
-$("#selectingc1").html("Normal Accounts");
-$("#homeoptions1").toggle();
-$("#normalaccounts").toggle();
-$("#premiumaccounts").css("display","none");
-});
-});
-
-$(document).ready(function(){
-$("#premiumaccounts1").click(function(){
-$("#premiumopt").toggle();
-});
-});
-
-$(document).ready(function(){
-$("#normalaccounts1").click(function(){
-$("#normalopt").toggle();
-});
-});
-
+function Premium(){
+ var pr=document.getElementById("premiumoptions");
+ if (pr.value == "AmazonPrime"){
+ document.getElementById("apv").style.display="block";
+ }
+ }
 </script>
 
 <script>
@@ -278,6 +239,9 @@ $("#about").css({ "background-color":"darkblue"});
 function selectform(){
 document.getElementById("hideform").style.display="block";
 }
+
+
+
 </script>
 </body>
 </html>
